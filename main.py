@@ -1,3 +1,4 @@
+import os
 from subprocess import Popen
 
 import aiohttp
@@ -238,8 +239,7 @@ def check_connection():
 	try:
 		teams_channel.server.roles
 	except aiohttp.errors.ClientOSError:
-		p=Popen("python"+PATH+"main.py", shell=True)
-		p.wait()
+		os.system('sudo shutdown -r now')
 
 
 check_connection_thread = _thread.start_new_thread(check_connection, ())
