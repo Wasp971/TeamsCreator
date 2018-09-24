@@ -1,4 +1,5 @@
 import os
+import pickle
 from subprocess import Popen
 
 import aiohttp
@@ -8,7 +9,7 @@ import numpy
 import math
 import _thread
 
-TOKEN = "NDU5NjMzMDU0MDU1NjYxNTY4.Dg5COg.vzK3yXnNSxbDzr00t2ZfBoz9mT0"
+TOKEN = ""
 
 bot = commands.Bot(command_prefix='/')
 names = ""
@@ -34,6 +35,16 @@ async def on_ready():
 	global teams_channel
 	print('Ready')
 
+
+def backup_recover():
+	global TOKEN
+	try:
+		file=open("/TOKENS/"+"TeamsCreator.pickle", "rb")
+		TOKEN=pickle.load(file)
+		file.close()
+		print("TOKEN info recovered")
+	except:
+		pass
 
 @bot.command(pass_context=True, description="st_dim: imposta la dimensione dei team")
 async def st_dim(ctx, n_in):
