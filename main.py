@@ -46,6 +46,10 @@ def backup_recover():
 	except:
 		pass
 
+
+backup_recover()
+
+
 @bot.command(pass_context=True, description="st_dim: imposta la dimensione dei team")
 async def st_dim(ctx, n_in):
 	global team_dim
